@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
+class_name Player
+
 @export var speed : float = 4.0
 @export var rotation_acceleration : float = 10.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+@export  var enabled : bool = false
 var mouse_sensitivity : float = 0.001
 var twist_input : float = 0.0
 var pitch_input : float = 0.0
@@ -18,11 +20,12 @@ func _ready() -> void:
 	intial_rotation = mesh.rotation.y
 
 func _physics_process(delta) -> void:
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-	get_input()
-	velocity = velocity * speed
-	move_and_slide()
+	if enabled:
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		get_input()
+		velocity = velocity * speed
+		move_and_slide()
 
 func _process(delta):
 	#rotate the player
@@ -47,8 +50,19 @@ func get_input() -> void:
 		velocity.x = direction.x
 		velocity.z = direction.z
 	velocity.y = vy
+
+
 func _unhandled_input(event : InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and enabled:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
+	
+func enable() -> void:
+	enabled = true
+
+func disable() -> void:
+	enabled = false
+
+func toggle_enabled() -> void:
+	enabled = !enabled

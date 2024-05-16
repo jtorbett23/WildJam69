@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://chlefhb2qw84j"]
+[gd_scene load_steps=28 format=3 uid="uid://chlefhb2qw84j"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_ap4iq"]
 [ext_resource type="PackedScene" uid="uid://dhodsi7nptwbe" path="res://player.tscn" id="1_v4lbe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6u57"]
@@ -283,7 +284,8 @@ shadow_mesh = SubResource("ArrayMesh_5jsov")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ff7wa"]
 points = PackedVector3Array(-0.0897344, 0.175434, 0.298668, 0.0245708, 0.155347, -0.30604, 0.0241015, 0.175187, -0.301026, 0.301577, 0.108239, 0.0720328, 0.174919, 0.298267, 0.0523692, -0.31141, 0.108021, -0.061953, -0.183122, 0.297804, -0.0418488, 0.149102, 0.0982369, 0.264487, 0.256065, 0.117048, -0.17823, 0.0420578, 0.297106, -0.181515, -0.263, 0.108165, 0.187007, -0.042276, 0.298044, 0.184156, 0.0617772, 0.0995864, -0.27916, -0.185461, 0.175296, -0.251956, 0.176641, 0.175267, 0.262569, -0.258542, 0.185003, 0.174498, 0.252877, 0.184812, -0.166488, -0.0719542, 0.0979705, 0.303732, -0.312505, 0.175048, -0.0621925, 0.293714, 0.185135, 0.070315, -0.189223, 0.116469, -0.257302, -0.302915, 0.0980235, -0.0333293, -0.107858, 0.297752, -0.15455, 0.154046, 0.29707, -0.106797, -0.155215, 0.298004, 0.108721, 0.107658, 0.297299, 0.1548, 0.0714692, 0.175332, -0.299165, 0.282941, 0.0984731, 0.0817662, -0.0427779, 0.175233, 0.310734, 0.161142, 0.116245, 0.278086, 0.301966, 0.17516, 0.0338334, -0.277952, 0.116085, 0.171161)
 
-[node name="Node3D" type="Node3D"]
+[node name="Level" type="Node3D"]
+script = ExtResource("1_ap4iq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2mq")
@@ -304,8 +306,6 @@ shape = SubResource("ConcavePolygonShape3D_iahea")
 
 [node name="Player" parent="." instance=ExtResource("1_v4lbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197758, 1.72558, -3.06107)
-speed = null
-rotation_acceleration = null
 
 [node name="rock1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02932, -0.172249, 0)

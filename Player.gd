@@ -21,11 +21,13 @@ func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	get_input()
+	velocity = velocity * speed
+	move_and_slide()
+
+func _process(delta):
 	#rotate the player
 	if velocity.x != 0 or velocity.z != 0:
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(velocity.x, velocity.z), delta * rotation_acceleration)
-	velocity = velocity * speed
-	move_and_slide()
 
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

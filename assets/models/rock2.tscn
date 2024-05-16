@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bop4e2mapkayu"]
+
+[ext_resource type="PackedScene" uid="uid://btqhuejt3soo5" path="res://assets/models/rock2.glb" id="1_tiab8"]
+
+[node name="rock2" instance=ExtResource("1_tiab8")]

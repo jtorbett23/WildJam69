@@ -4,23 +4,29 @@ class_name Player
 
 @export var speed : float = 4.0
 @export var rotation_acceleration : float = 10.0
+@export var lay_acceleration : float = 2.0
+@export var lay_angle : int = 90
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export  var enabled : bool = false
 var mouse_sensitivity : float = 0.001
 var twist_input : float = 0.0
 var pitch_input : float = 0.0
+var pitch_min : int = -30
+var pitch_max : int = 25
 
 @onready var twist_pivot : Node3D = $TwistPivot
 @onready var pitch_pivot : Node3D = $TwistPivot/PitchPivot
+@onready var camera : Camera3D = $TwistPivot/PitchPivot/Camera3D
 @onready var mesh : MeshInstance3D = $Mesh/body
 var intial_rotation : float 
+var lay : bool = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	intial_rotation = mesh.rotation.y
 
 func _physics_process(delta) -> void:
-	if enabled:
+	if enabled and !lay:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		get_input()
@@ -37,9 +43,23 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+	if Input.is_action_just_pressed("lay"):
+		lay = !lay
+		if lay:
+			pitch_min -= 20
+			pitch_max -= 20
+		else:
+			pitch_min += 20
+			pitch_max += 20
+
+
+	if lay and camera.rotation.x != lay_angle:
+		camera.rotation.x = lerp_angle(camera.rotation.x, lay_angle, delta * lay_acceleration)
+	elif !lay and camera.rotation.x != 0:
+		camera.rotation.x = lerp_angle(camera.rotation.x, 0, delta * lay_acceleration)
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
-	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, deg_to_rad(-30), deg_to_rad(25))
+	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, deg_to_rad(pitch_min), deg_to_rad(pitch_max))
 	twist_input = 0.0
 	pitch_input = 0.0
 

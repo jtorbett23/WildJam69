@@ -2,33 +2,31 @@
 
 [ext_resource type="Script" path="res://Level/level.gd" id="1_ap4iq"]
 [ext_resource type="PackedScene" uid="uid://dhodsi7nptwbe" path="res://Level/Character/player.tscn" id="1_v4lbe"]
+[ext_resource type="Material" uid="uid://bh66o0m2ltoie" path="res://Level/Sky/sky_shader.tres" id="2_nncl2"]
 [ext_resource type="PackedScene" uid="uid://sdfxyhtkktsc" path="res://Level/Environment/land.tscn" id="3_jcrid"]
 [ext_resource type="PackedScene" uid="uid://bfklwmja6k5n" path="res://Level/Character/cube_big.tscn" id="4_agjgw"]
 [ext_resource type="PackedScene" uid="uid://cweca82sjcd8r" path="res://Level/Character/cube_party.tscn.tscn" id="4_sh0fg"]
 [ext_resource type="PackedScene" uid="uid://c5gj1657tey42" path="res://Level/Character/cube_sky.tscn" id="6_tujyg"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6u57"]
-sky_horizon_color = Color(0.958167, 0.503452, 0.452654, 1)
-ground_bottom_color = Color(0.956863, 0.501961, 0.45098, 1)
-ground_horizon_color = Color(0.956863, 0.501961, 0.45098, 1)
-
 [sub_resource type="Sky" id="Sky_v1c6m"]
-sky_material = SubResource("ProceduralSkyMaterial_e6u57")
+sky_material = ExtResource("2_nncl2")
 
 [sub_resource type="Environment" id="Environment_ot2mq"]
 background_mode = 2
 sky = SubResource("Sky_v1c6m")
+ambient_light_energy = 0.0
 tonemap_mode = 2
+fog_density = 0.085
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_ap4iq")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="20" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2mq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-visible = false
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 22.9174, 0)
+light_energy = 0.8
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_v4lbe")]

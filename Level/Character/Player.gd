@@ -51,6 +51,9 @@ func _process(delta):
 		else:
 			pitch_min += 20
 			pitch_max += 20
+	
+	elif Input.is_action_just_released("breath"):
+		Events.toggle_breathing.emit()
 
 
 	if lay and camera.rotation.x != lay_angle:

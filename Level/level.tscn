@@ -26,7 +26,7 @@ environment = SubResource("Environment_ot2mq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 22.9174, 0)
-light_energy = 0.8
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_v4lbe")]
@@ -44,3 +44,5 @@ transform = Transform3D(-0.475686, 0, 0.879615, 0, 1, 0, -0.879615, 0, -0.475686
 
 [node name="cube_sky" parent="." instance=ExtResource("6_tujyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3835, 0, -5.93669)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

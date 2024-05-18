@@ -2,9 +2,11 @@ extends MenuTurbo
 
 class_name MainMenu
 
-var level_path = "res://Level/level.tscn"
+var level_path : String = "res://Level/level.tscn"
+var music_path : String = "res://assets/music/menu.mp3"
 
 func _ready() -> void:
+	AudioManager.play_music(music_path)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Camera.set_static()
 	Camera.enabled = true

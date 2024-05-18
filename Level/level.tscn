@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4j7mvqr0v0ey"]
+
+[ext_resource type="Script" path="res://Level/level.gd" id="1_ap4iq"]
+[ext_resource type="PackedScene" uid="uid://dhodsi7nptwbe" path="res://Level/Character/player.tscn" id="1_v4lbe"]
+[ext_resource type="PackedScene" uid="uid://sdfxyhtkktsc" path="res://Level/Environment/land.tscn" id="3_jcrid"]
+[ext_resource type="PackedScene" uid="uid://bfklwmja6k5n" path="res://Level/Character/cube_big.tscn" id="4_agjgw"]
+[ext_resource type="PackedScene" uid="uid://cweca82sjcd8r" path="res://Level/Character/cube_party.tscn.tscn" id="4_sh0fg"]
+[ext_resource type="PackedScene" uid="uid://c5gj1657tey42" path="res://Level/Character/cube_sky.tscn" id="6_tujyg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6u57"]
+sky_horizon_color = Color(0.958167, 0.503452, 0.452654, 1)
+ground_bottom_color = Color(0.956863, 0.501961, 0.45098, 1)
+ground_horizon_color = Color(0.956863, 0.501961, 0.45098, 1)
+
+[sub_resource type="Sky" id="Sky_v1c6m"]
+sky_material = SubResource("ProceduralSkyMaterial_e6u57")
+
+[sub_resource type="Environment" id="Environment_ot2mq"]
+background_mode = 2
+sky = SubResource("Sky_v1c6m")
+tonemap_mode = 2
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_ap4iq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ot2mq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_v4lbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.151, 10, 14.319)
+enabled = true
+
+[node name="land" parent="." instance=ExtResource("3_jcrid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58949, 0)
+
+[node name="cube_party" parent="." instance=ExtResource("4_sh0fg")]
+transform = Transform3D(-0.808727, -0.00196198, -0.588181, -0.00242601, 0.999997, -1.01382e-10, 0.588179, 0.00142693, -0.808729, -16.4316, -1.60398, -13.4118)
+
+[node name="cube_big" parent="." instance=ExtResource("4_agjgw")]
+transform = Transform3D(-0.475686, 0, 0.879615, 0, 1, 0, -0.879615, 0, -0.475686, 7.03705, 0.643097, 8.52454)
+
+[node name="cube_sky" parent="." instance=ExtResource("6_tujyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3835, 0, -5.93669)

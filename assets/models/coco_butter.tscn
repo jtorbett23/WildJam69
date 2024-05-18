@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7fpnrml2w3c8"]
-
-[ext_resource type="PackedScene" uid="uid://tydv2l3ajrnh" path="res://assets/models/coco butter.glb" id="1_jikit"]
-
-[node name="coco butter" instance=ExtResource("1_jikit")]

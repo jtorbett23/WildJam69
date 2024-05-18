@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch0vu4osq14j5"]
+
+[ext_resource type="PackedScene" uid="uid://be6n7nupu1ec0" path="res://assets/models/moodi.glb" id="1_wjuym"]
+
+[node name="moodi" instance=ExtResource("1_wjuym")]
+
+[node name="smile" parent="." index="4"]
+visible = false
+
+[node name="eyehappy" parent="." index="5"]
+visible = false
+
+[node name="blush" parent="." index="6"]
+visible = false

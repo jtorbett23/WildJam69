@@ -2,7 +2,7 @@ extends MenuTurbo
 
 class_name MainMenu
 
-var level_path = "res://level.tscn"
+var level_path = "res://Level/level.tscn"
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

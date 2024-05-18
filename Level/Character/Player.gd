@@ -13,17 +13,25 @@ var twist_input : float = 0.0
 var pitch_input : float = 0.0
 var pitch_min : int = -30
 var pitch_max : int = 25
+var care_level : int = 0
+var care_completed : Dictionary = {
+	"breath" : false,
+	"clouds" : false,
+	"share" : false
+}
 
 @onready var twist_pivot : Node3D = $TwistPivot
 @onready var pitch_pivot : Node3D = $TwistPivot/PitchPivot
 @onready var camera : Camera3D = $TwistPivot/PitchPivot/Camera3D
 @onready var mesh : MeshInstance3D = $Mesh/body
+@onready var action_finder : Area3D = $Mesh/body/ActionFinder
 var intial_rotation : float 
 var lay : bool = false
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	intial_rotation = mesh.rotation.y
+	Events.dialog_complete.connect(Callable(self, "enable"))
 
 func _physics_process(delta) -> void:
 	if enabled and !lay:
@@ -39,22 +47,6 @@ func _process(delta):
 	if velocity.x != 0 or velocity.z != 0:
 		if mesh:
 			mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-velocity.x, -velocity.z), delta * rotation_acceleration)
-
-	if Input.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	if Input.is_action_just_pressed("lay"):
-		lay = !lay
-		if lay:
-			pitch_min -= 20
-			pitch_max -= 20
-		else:
-			pitch_min += 20
-			pitch_max += 20
-	
-	elif Input.is_action_just_released("breath"):
-		Events.toggle_breathing.emit()
-
 
 	if lay and camera.rotation.x != lay_angle:
 		camera.rotation.x = lerp_angle(camera.rotation.x, lay_angle, delta * lay_acceleration)
@@ -79,9 +71,28 @@ func get_input() -> void:
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventMouseMotion and enabled:
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			twist_input = - event.relative.x * mouse_sensitivity
-			pitch_input = - event.relative.y * mouse_sensitivity
+		# if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		twist_input = - event.relative.x * mouse_sensitivity
+		pitch_input = - event.relative.y * mouse_sensitivity
+	elif Input.is_action_just_pressed("interact"):
+		var actionables = action_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			self.disable()
+			actionables[0].action(care_completed)
+	elif Input.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif Input.is_action_just_pressed("lay"):
+		lay = !lay
+		if lay:
+			pitch_min -= 20
+			pitch_max -= 20
+		else:
+			care("clouds")
+			pitch_min += 20
+			pitch_max += 20
+	elif Input.is_action_just_released("breath"):
+		Events.toggle_breathing.emit()
+
 	
 func enable() -> void:
 	enabled = true
@@ -91,3 +102,21 @@ func disable() -> void:
 
 func toggle_enabled() -> void:
 	enabled = !enabled
+
+func care(type : String) -> void:
+	if !care_completed[type]:
+		care_completed[type] = true
+		care_level += 1
+		update_model(care_level)
+
+func update_model(level : int):
+	if level == 1:
+		mesh.get_node("tears").hide()
+	elif level == 2:
+		mesh.get_node("sad").hide()
+		mesh.get_node("smile").show()
+	elif level == 3:
+		mesh.get_node("eyesad").hide()
+		mesh.get_node("eyehappy").show()
+		mesh.get_node("blush").show()
+

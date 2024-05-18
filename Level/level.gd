@@ -28,6 +28,7 @@ func toggle_breather():
 	else:
 		breather.exit()
 		AudioManager.play_music(music_path)
+		player.care("breath")
 
 
 	

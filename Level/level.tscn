@@ -31,14 +31,14 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_v4lbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.151, 10, 14.319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.151, 10, -7.10782)
 enabled = true
 
 [node name="land" parent="." instance=ExtResource("3_jcrid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58949, 0)
 
 [node name="cube_party" parent="." instance=ExtResource("4_sh0fg")]
-transform = Transform3D(-0.808727, -0.00196198, -0.588181, -0.00242601, 0.999997, -1.01382e-10, 0.588179, 0.00142693, -0.808729, -16.4316, -1.60398, -13.4118)
+transform = Transform3D(-0.808727, -0.00196198, -0.588181, -0.00242601, 0.999997, -1.01382e-10, 0.588179, 0.00142693, -0.808729, -16.4316, 0.621362, -13.4118)
 
 [node name="cube_big" parent="." instance=ExtResource("4_agjgw")]
 transform = Transform3D(-0.475686, 0, 0.879615, 0, 1, 0, -0.879615, 0, -0.475686, 7.03705, 0.643097, 8.52454)

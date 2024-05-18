@@ -3,12 +3,12 @@ extends Control
 var fade_in : bool = false
 var fade_out : bool = false
 var fade_speed : float = 2
-var leaf_speed : float = 150
+var leaf_speed : float = 100
 @onready var background : ColorRect = $Background
 @onready var leaf : Control = $Background/leaf
 var breathing : bool = false
-var falling : bool = true
-var breath_time : float = 3.55
+var falling : bool = false
+var breath_time : float = 3.5294
 var breath_timer : float = 0.0
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var music_path : String = "res://assets/music/breath.mp3"

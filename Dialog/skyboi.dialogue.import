@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://3ngtouhi2v6f"
+path="res://.godot/imported/skyboi.dialogue-39e9192d4097db301600bc1553ee3223.tres"
+
+[deps]
+
+source_file="res://Dialog/skyboi.dialogue"
+dest_files=["res://.godot/imported/skyboi.dialogue-39e9192d4097db301600bc1553ee3223.tres"]
+
+[params]
+
+defaults=true

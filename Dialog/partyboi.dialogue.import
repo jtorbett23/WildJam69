@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://dl8hww6gohdi5"
+path="res://.godot/imported/partyboi.dialogue-f77c872d68939a26d75be775770018de.tres"
+
+[deps]
+
+source_file="res://Dialog/partyboi.dialogue"
+dest_files=["res://.godot/imported/partyboi.dialogue-f77c872d68939a26d75be775770018de.tres"]
+
+[params]
+
+defaults=true

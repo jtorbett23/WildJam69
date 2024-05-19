@@ -29,6 +29,7 @@ var care_completed : Dictionary = {
 var intial_rotation : float 
 var lay : bool = false
 var breath : bool = false
+var diaglog_balloon_path : String = "res://Dialog/balloon.tscn"
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -130,6 +131,14 @@ func update_model(level : int):
 		mesh.get_node("eyesad").hide()
 		mesh.get_node("eyehappy").show()
 		mesh.get_node("blush").show()
+		get_tree().create_timer(3).timeout.connect(Callable(self, "final_narrator_text"))
+
+func final_narrator_text():
+	var dialog_resource : DialogueResource = load("res://Dialog/narrator.dialogue")
+	var balloon = load(diaglog_balloon_path).instantiate()
+	get_tree().root.add_child(balloon)
+	disable()
+	balloon.start(dialog_resource, "finish")
 
 func update_text(text):
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

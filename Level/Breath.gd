@@ -40,15 +40,17 @@ func _process(delta):
 	
 	if breathing:
 		breath_timer += delta
+		var angle_change = 0
 		if(breath_timer >= breath_time):
 			breath_timer = 0
 			falling = !falling
 		if falling:
 			leaf.position.y += delta * leaf_speed
-			leaf.rotation += delta * rng.randf_range(-1,1)
+			angle_change = delta * rng.randf_range(-1,1)
 		else:
 			leaf.position.y -= delta * leaf_speed
-			leaf.rotation -= delta * rng.randf_range(-1,1)
+			angle_change = -delta * rng.randf_range(-1,1)
+		leaf.rotation = lerp(leaf.rotation, leaf.rotation + angle_change, 0.5)
 		leaf.rotation = clamp(leaf.rotation, -30, 30)
 
 func _unhandled_input(event : InputEvent) -> void:

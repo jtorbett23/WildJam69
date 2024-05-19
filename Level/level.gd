@@ -6,6 +6,8 @@ var music_path : String = "res://assets/music/level.mp3"
 
 @onready var player : Player = $Player
 @onready var canvas : CanvasLayer = $CanvasLayer
+var diaglog_balloon_path : String = "res://Dialog/balloon.tscn"
+var dialog_resource : DialogueResource = load("res://Dialog/narrator.dialogue")
 
 func _ready() -> void:
 	AudioManager.play_music(music_path)
@@ -13,10 +15,14 @@ func _ready() -> void:
 	Events.start_breathing.connect(Callable(self,"start_breather"))
 	Events.end_breathing.connect(Callable(self,"end_breather"))
 	Events.start_talking.connect(Callable(self, "start_talking"))
+	post_fade() # remove for full release
 
 
 func post_fade() -> void:
-	player.enable()
+	await RenderingServer.frame_post_draw
+	var balloon = load(diaglog_balloon_path).instantiate()
+	get_tree().root.add_child(balloon)
+	balloon.start(dialog_resource, "start")
 
 func _unhandled_input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):

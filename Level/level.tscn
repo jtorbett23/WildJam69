@@ -21,7 +21,7 @@ fog_density = 0.085
 [node name="Level" type="Node3D"]
 script = ExtResource("1_ap4iq")
 
-[node name="WolrdEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ot2mq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -31,8 +31,12 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_v4lbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.151, 10, -7.10782)
-enabled = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.151, 0.398, 14.308)
+speed = 4.0
+rotation_acceleration = 10.0
+lay_acceleration = 2.0
+lay_angle = 90
+enabled = false
 
 [node name="land" parent="." instance=ExtResource("3_jcrid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58949, 0)

@@ -20,6 +20,7 @@ var care_completed : Dictionary = {
 	"share" : false
 }
 
+@onready var speech_text : Label3D = $TwistPivot/PitchPivot/Speech
 @onready var twist_pivot : Node3D = $TwistPivot
 @onready var pitch_pivot : Node3D = $TwistPivot/PitchPivot
 @onready var camera : Camera3D = $TwistPivot/PitchPivot/Camera3D
@@ -27,6 +28,7 @@ var care_completed : Dictionary = {
 @onready var action_finder : Area3D = $Mesh/body/ActionFinder
 var intial_rotation : float 
 var lay : bool = false
+var breath : bool = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -74,24 +76,33 @@ func _unhandled_input(event : InputEvent) -> void:
 		# if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		twist_input = - event.relative.x * mouse_sensitivity
 		pitch_input = - event.relative.y * mouse_sensitivity
-	elif Input.is_action_just_pressed("interact"):
+	elif Input.is_action_just_pressed("interact") and !lay and !breath:
 		var actionables = action_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			self.disable()
 			actionables[0].action(care_completed)
 	elif Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif Input.is_action_just_pressed("lay"):
+	elif Input.is_action_just_pressed("lay") and !breath:
 		lay = !lay
 		if lay:
 			pitch_min -= 20
 			pitch_max -= 20
+			var actionables = action_finder.get_overlapping_areas()
+			if actionables.size() > 0:
+				actionables[0].action(care_completed, "lay")
 		else:
 			care("clouds")
 			pitch_min += 20
 			pitch_max += 20
-	elif Input.is_action_just_released("breath"):
-		Events.toggle_breathing.emit()
+	elif Input.is_action_just_released("breath") and enabled:
+		if(!breath):
+			breath = true
+			Events.start_breathing.emit()
+
+	elif Input.is_action_just_pressed("talk") and enabled:
+		self.disable()
+		Events.start_talking.emit()
 
 	
 func enable() -> void:
@@ -120,3 +131,10 @@ func update_model(level : int):
 		mesh.get_node("eyehappy").show()
 		mesh.get_node("blush").show()
 
+func update_text(text):
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	enable()
+	speech_text.text = text
+	speech_text.show()
+	care("share")
+	get_tree().create_timer(3).timeout.connect(func(): speech_text.hide())

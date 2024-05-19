@@ -6,9 +6,11 @@ extends Area3D
 
 var diaglog_balloon_path : String = "res://Dialog/balloon.tscn"
 
-func action(compeletd_care: Dictionary) -> void:
+func action(compeletd_care: Dictionary, override : String = "") -> void:
 	if compeletd_care[action_style] == true:
 		dialog_start = "finish"
+	if override != "":
+		dialog_start = override
 	var balloon = load(diaglog_balloon_path).instantiate()
 	get_tree().root.add_child(balloon)
 	balloon.start(dialog_resource, dialog_start)

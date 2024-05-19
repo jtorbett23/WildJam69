@@ -35,6 +35,7 @@ func _process(delta):
 		leaf.modulate.a -= fade_speed * delta
 		if(background.color.a <= 0.0):
 			fade_out = false
+			Events.end_breathing.emit()
 			queue_free()
 	
 	if breathing:
@@ -50,4 +51,7 @@ func _process(delta):
 			leaf.rotation -= delta * rng.randf_range(-1,1)
 		leaf.rotation = clamp(leaf.rotation, -30, 30)
 
-
+func _unhandled_input(event : InputEvent) -> void:
+	if Input.is_action_just_released("breath"):
+		if !fade_in and !fade_out:
+			fade_out = true

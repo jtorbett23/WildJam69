@@ -6,6 +6,8 @@ func _ready() -> void:
 	var credits_text = "Art:
 	Level & Character
 	- Momo
+	Dialogue Manager
+	- Nathan Hoald
 	"
 	
 	self.set_content("Credits", 

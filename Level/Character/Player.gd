@@ -32,7 +32,7 @@ var breath : bool = false
 var diaglog_balloon_path : String = "res://Dialog/balloon.tscn"
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	intial_rotation = mesh.rotation.y
 	Events.dialog_complete.connect(Callable(self, "enable"))
 
@@ -82,8 +82,8 @@ func _unhandled_input(event : InputEvent) -> void:
 		if actionables.size() > 0:
 			self.disable()
 			actionables[0].action(care_completed)
-	elif Input.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# elif Input.is_action_pressed("ui_cancel"):
+	# 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif Input.is_action_just_pressed("lay") and !breath and enabled:
 		lay = !lay
 		if lay:
@@ -143,7 +143,7 @@ func final_narrator_text():
 	balloon.start(dialog_resource, "finish")
 
 func update_text(text):
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	enable()
 	speech_text.text = text
 	speech_text.show()

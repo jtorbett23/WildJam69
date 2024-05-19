@@ -22,7 +22,7 @@ func _ready() -> void:
 		{"name":"Return to Main Menu", "callback": Callable(self, "main_menu") }])
 
 func close() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if !close_callback.is_null():
 		close_callback.call()
 	self.queue_free()

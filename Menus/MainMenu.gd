@@ -3,7 +3,7 @@ extends MenuTurbo
 class_name MainMenu
 
 var level_path : String = "res://Level/level.tscn"
-var music_path : String = "res://assets/music/menu.mp3"
+var music_path : String = "res://assets/music/menu.wav"
 
 func _ready() -> void:
 	AudioManager.play_music(music_path)

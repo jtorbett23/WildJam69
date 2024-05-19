@@ -2,7 +2,7 @@ extends Node3D
 
 var breath_scene = "res://Level/breath.tscn"
 var breather : Control 
-var music_path : String = "res://assets/music/level.mp3"
+var music_path : String = "res://assets/music/level.wav"
 
 @onready var player : Player = $Player
 @onready var canvas : CanvasLayer = $CanvasLayer
@@ -15,8 +15,6 @@ func _ready() -> void:
 	Events.start_breathing.connect(Callable(self,"start_breather"))
 	Events.end_breathing.connect(Callable(self,"end_breather"))
 	Events.start_talking.connect(Callable(self, "start_talking"))
-	post_fade() # remove for full release
-
 
 func post_fade() -> void:
 	await RenderingServer.frame_post_draw

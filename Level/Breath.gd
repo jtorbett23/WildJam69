@@ -11,7 +11,7 @@ var falling : bool = false
 var breath_time : float = 3.5294
 var breath_timer : float = 0.0
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-var music_path : String = "res://assets/music/breath.mp3"
+var music_path : String = "res://assets/music/breath.wav"
 
 func _ready() -> void:
 	fade_in = true

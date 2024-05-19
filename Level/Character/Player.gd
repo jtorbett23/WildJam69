@@ -89,11 +89,13 @@ func _unhandled_input(event : InputEvent) -> void:
 		if lay:
 			pitch_min -= 20
 			pitch_max -= 20
+			camera.set_fov(90)
 			var actionables = action_finder.get_overlapping_areas()
 			if actionables.size() > 0:
 				actionables[0].action(care_completed, "lay")
 		else:
 			care("clouds")
+			camera.set_fov(70)
 			pitch_min += 20
 			pitch_max += 20
 	elif Input.is_action_just_released("breath") and enabled:

@@ -195,8 +195,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ikej0")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8qcf2"]
-points = PackedVector3Array(1, 1, 0.999979, 1, -1, 0.999979, 1, 1, -1, -1.00005, 1, 0.999979, 1, -1, -1, -1.00005, -1, 0.999979, -1.00005, 1, -1, -1.09342, 0.123727, 0.113732, -1.07157, 0.140172, 0.50527, -1.00005, -1, -1, -1.10208, -0.108849, 0.0221117, -1.10455, -0.107478, -0.0119522, -1.1029, -0.13704, -0.0558045, -1.09466, 0.00861394, -0.303648, -1.09899, 0.0127251, -0.269585, -1.10084, -0.000587285, -0.250595, -1.09383, 0.115309, 0.0767313, -1.10414, -0.0330853, -0.173853, -1.10579, -0.066758, -0.110424, -1.10579, -0.098473, -0.0456245, -1.10352, -0.121966, -0.0930007, -1.10332, -0.101605, -0.128435, -1.10187, -0.0107674, -0.228082, -1.1029, -0.0207518, -0.20224, -1.10579, -0.0839859, -0.078318)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rem73"]
+size = Vector3(2.01355, 2.0293, 2.22598)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aem14"]
 
@@ -216,8 +216,8 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.613217, 0, 0, 0, 0.613217, 0, 0, 0, 0.613217, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_8qcf2")
+transform = Transform3D(0.613217, 0, 0, 0, 0.613217, 0, 0, 0, 0.613217, 0.0173291, 0.026948, 0.0263094)
+shape = SubResource("BoxShape3D_rem73")
 
 [node name="Actionable" parent="." instance=ExtResource("2_5w23v")]
 dialog_resource = ExtResource("3_336qx")

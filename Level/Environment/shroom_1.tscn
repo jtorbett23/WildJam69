@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dib7vbvt3o0bo"]
+[gd_scene load_steps=3 format=3 uid="uid://dib7vbvt3o0bo"]
 
 [ext_resource type="PackedScene" uid="uid://nlfr4kt0bx2c" path="res://assets/models/shroom1.glb" id="1_xjd03"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6xtbn"]
+height = 4.33795
+radius = 1.27615
+
 [node name="shroom1" instance=ExtResource("1_xjd03")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.222229, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27193, -0.586242)
+shape = SubResource("CylinderShape3D_6xtbn")

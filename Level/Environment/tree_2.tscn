@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdlcm064iqc45"]
+[gd_scene load_steps=3 format=3 uid="uid://cdlcm064iqc45"]
 
 [ext_resource type="PackedScene" uid="uid://d3jhef3hv6sk3" path="res://assets/models/tree_2.glb" id="1_8h2gt"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mh33d"]
+
 [node name="tree_2" instance=ExtResource("1_8h2gt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109787, 0.897034, 0)
+shape = SubResource("CylinderShape3D_mh33d")

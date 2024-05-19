@@ -3,4 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://nlfr4kt0bx2c" path="res://assets/models/shroom1.glb" id="1_xjd03"]
 
 [node name="shroom1" instance=ExtResource("1_xjd03")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.222229, 0)

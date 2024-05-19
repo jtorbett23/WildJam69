@@ -165,4 +165,4 @@ transform = Transform3D(-4.74198, 0, -1.58545, 0, 5, 0, 1.58545, 0, -4.74198, -9
 [node name="shroom_1" type="Node3D" parent="Decor"]
 
 [node name="shroom1" parent="Decor/shroom_1" instance=ExtResource("10_w3xin")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 7.20676, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 7.20676, -0.311096, 0)

@@ -26,8 +26,9 @@ func post_fade() -> void:
 
 func _unhandled_input(event : InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
-		player.toggle_enabled()
-		SceneManager.change_scene(self, MainMenu)
+		if !canvas.has_node("Pause"):
+			player.disable()
+			canvas.add_child(PauseMenu.new(Callable(player, "enable")))
 	
 func start_breather():
 	player.disable()

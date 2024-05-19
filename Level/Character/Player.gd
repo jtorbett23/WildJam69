@@ -77,14 +77,14 @@ func _unhandled_input(event : InputEvent) -> void:
 		# if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		twist_input = - event.relative.x * mouse_sensitivity
 		pitch_input = - event.relative.y * mouse_sensitivity
-	elif Input.is_action_just_pressed("interact") and !lay and !breath:
+	elif Input.is_action_just_pressed("interact") and !lay and !breath and enabled:
 		var actionables = action_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			self.disable()
 			actionables[0].action(care_completed)
 	elif Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif Input.is_action_just_pressed("lay") and !breath:
+	elif Input.is_action_just_pressed("lay") and !breath and enabled:
 		lay = !lay
 		if lay:
 			pitch_min -= 20

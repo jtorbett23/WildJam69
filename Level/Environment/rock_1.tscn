@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsjcdgpwmdcc8"]
+
+[ext_resource type="PackedScene" uid="uid://bqhv7fcgtx717" path="res://assets/models/rock1.glb" id="1_ftco5"]
+
+[node name="rock1" instance=ExtResource("1_ftco5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

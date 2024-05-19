@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://3n2nbp6j5xhi"]
+
+[ext_resource type="PackedScene" uid="uid://dwuvfhsr6c5p0" path="res://assets/models/shroom2.glb" id="1_b7dk3"]
+
+[node name="shroom2" instance=ExtResource("1_b7dk3")]

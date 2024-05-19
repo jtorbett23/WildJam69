@@ -39,8 +39,8 @@ func end_breather():
 	if canvas.has_node("Breath"):
 		breather.exit()
 		AudioManager.play_music(music_path)
-		player.care("breath")
 		player.enable()
+		player.care("breath")
 		player.breath = false
 
 func start_talking():

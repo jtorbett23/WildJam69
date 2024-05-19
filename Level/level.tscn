@@ -40,6 +40,7 @@ sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_v4lbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.151, 0.398, 14.308)
+enabled = true
 
 [node name="land" parent="." instance=ExtResource("3_jcrid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.61238, 0)

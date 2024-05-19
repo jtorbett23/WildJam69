@@ -10,11 +10,12 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Camera.set_static()
 	Camera.enabled = true
-	self.set_content("Void Checkpoint", 
-	[	{"name": "Start Game", "callback": Callable(self, "start_game")}, 
-		{"name":"Settings", "callback": Callable(self, "settings")},
-		{"name":"Credits", "callback": Callable(self, "credits")}
-		], "By Moshu")	
+
+	var menu_content : Array[Dictionary] = [{"name": "Start Game", "callback": Callable(self, "start_game")}, {"name":"Settings", "callback": Callable(self, "settings")}, {"name":"Credits", "callback": Callable(self, "credits")}]
+	
+	if OS.has_feature("windows") or OS.has_feature("macos"):
+		menu_content.append({"name": "Exit Game", "callback": Callable(func(): get_tree().quit())})
+	self.set_content("Void Checkpoint", menu_content, "By Moshu")	
 
 func start_game() -> void:
 	var level = load(level_path).instantiate()

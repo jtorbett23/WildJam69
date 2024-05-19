@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://dth6yjvovi8wf"
+path="res://.godot/imported/bigboi.dialogue-5b07554842a24707d23637430050dde0.tres"
+
+[deps]
+
+source_file="res://Dialog/bigboi.dialogue"
+dest_files=["res://.godot/imported/bigboi.dialogue-5b07554842a24707d23637430050dde0.tres"]
+
+[params]
+
+defaults=true

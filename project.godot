@@ -90,7 +90,7 @@ talk={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialog/partyboi.dialogue", "res://Dialog/skyboi.dialogue", "res://Dialog/narrator.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialog/partyboi.dialogue", "res://Dialog/skyboi.dialogue", "res://Dialog/narrator.dialogue", "res://Dialog/bigboi.dialogue")
 
 [layer_names]
 

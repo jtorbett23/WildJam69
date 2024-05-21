@@ -1,3 +1,3 @@
-[submodule "Godot-Turbo-Library"]
-	path = Godot-Turbo-Library
+[submodule "addons/Godot-Turbo-Library"]
+	path = addons/Godot-Turbo-Library
 	url = https://github.com/jtorbett23/Godot-Turbo-Library

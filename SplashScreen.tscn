@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://biq32tx076ot0"]
+
+[ext_resource type="Script" path="res://addons/Godot-Turbo-Library/ui/splash/SplashScreenManager.gd" id="1_s8ccd"]
+[ext_resource type="PackedScene" uid="uid://cb38fsjdsfh2v" path="res://main.tscn" id="2_eg0ks"]
+[ext_resource type="Texture2D" uid="uid://byd8wt2rbjiih" path="res://addons/Godot-Turbo-Library/ui/splash/godot-small.png" id="2_g5bwt"]
+[ext_resource type="Script" path="res://addons/Godot-Turbo-Library/ui/splash/SplashScreen.gd" id="3_vujxv"]
+
+[node name="SplashScreenManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s8ccd")
+_move_to = ExtResource("2_eg0ks")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SplashContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Godot" type="TextureRect" parent="SplashContainer"]
+custom_minimum_size = Vector2(725, 256)
+layout_mode = 2
+texture = ExtResource("2_g5bwt")
+expand_mode = 1
+script = ExtResource("3_vujxv")
+
+[node name="Moshu" type="Label" parent="SplashContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Moshu"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_vujxv")

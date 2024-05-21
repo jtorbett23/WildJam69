@@ -11,17 +11,19 @@ config_version=5
 [application]
 
 config/name="WildJam69"
-run/main_scene="res://main.tscn"
+run/main_scene="res://SplashScreen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
 
-AudioManager="*res://Godot-Turbo-Library/singletons/AudioManager.gd"
-Camera="*res://Godot-Turbo-Library/singletons/Camera2D.gd"
-SceneManager="*res://Godot-Turbo-Library/SceneManager.gd"
+AudioManager="*res://addons/Godot-Turbo-Library/singletons/AudioManager.gd"
 Events="*res://Events.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+UiManager="*res://addons/Godot-Turbo-Library/ui/UIManager.gd"
+SceneManager="*res://addons/Godot-Turbo-Library/singletons/SceneManager.gd"
 
 [dialogue_manager]
 

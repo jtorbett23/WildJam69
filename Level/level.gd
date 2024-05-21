@@ -11,7 +11,6 @@ var dialog_resource : DialogueResource = load("res://Dialog/narrator.dialogue")
 
 func _ready() -> void:
 	AudioManager.play_music(music_path)
-	Camera.enabled = false
 	Events.start_breathing.connect(Callable(self,"start_breather"))
 	Events.end_breathing.connect(Callable(self,"end_breather"))
 	Events.start_talking.connect(Callable(self, "start_talking"))
